@@ -61,18 +61,18 @@ function loadLevel(jsonData)
 	
 	// Włożyć po inicjalizacji
 	window.addEventListener('deviceorientation', function(event) {
-		var   b2Vec2 = Box2D.Common.Math.b2Vec2
+		var   b2Vec2 = Box2D.Common.Math.b2Vec2;
 		var alpha = event.alpha;
 		var beta = event.beta;
 		var gamma = event.gamma;
-		physicsWorld.SetGravity(new b2Vec2(-Math.round(gamma), -Math.round(beta)));
+		
 		  
 		var coords = document.getElementById("coordinates");
 			
-		coords.innerHTML = 'Rotation: '
+		/*coords.innerHTML = 'Rotation: '
 		    + '[ x: '+ Math.round(alpha) + " ]"
 		    + '[ y: '+ Math.round(beta) + " ]"
-		    + '[ z: '+ Math.round(gamma) + ' ]' + Math.random();
+		    + '[ z: '+ Math.round(gamma) + ' ]' + Math.random();*/
 		}, true);
 	
     window.addEventListener("devicemotion", logDeviceMotion, true);
@@ -84,12 +84,21 @@ function loadLevel(jsonData)
 function logDeviceMotion(e)
 {
 	var coords = document.getElementById("coordinates");
+	var   b2Vec2 = Box2D.Common.Math.b2Vec2;
 	
-	/*coords.innerHTML = 'Acceleration: '
+	coords.innerHTML = 'Acceleration: '
         + '[ x: '+ Math.round(e.acceleration.x) + " ]"
         + '[ y: '+ Math.round(e.acceleration.y) + " ]"
         + '[ z: '+ Math.round(e.acceleration.z) + ' ]';
-	*/
+	
+	coords.innerHTML = coords.innerHTML + 'Gravity: '
+        + '[ x: ' + Math.round(e.accelerationIncludingGravity.x) + " ]"
+        + '[ y: ' + Math.round(e.accelerationIncludingGravity.y) + " ]"
+        + '[ z: ' + Math.round(e.accelerationIncludingGravity.z) + ' ]';
+	
+	physicsWorld.SetGravity(new b2Vec2(Math.round(e.accelerationIncludingGravity.y), Math.round(e.accelerationIncludingGravity.x)));
+	
+
 }
 
 function drawRectangleFromJSON(rect)
@@ -177,7 +186,7 @@ function initializePhysics()
 
 function update() { 
     physicsWorld.Step(1 / 60, 10, 10);
-    //world.ClearForces();
+    physicsWorld.ClearForces();
 
     viewUpdate();
    //physicsWorld.DrawDebugData();
