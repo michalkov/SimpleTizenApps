@@ -1,5 +1,5 @@
-var locationLabel;
-var headingLabel;
+var latitudeLabel;
+var longitudeLabel;
 var informationLabel;
 var locationID;
 var watchID = -1;
@@ -12,28 +12,27 @@ window.onload = function () {
             tizen.application.getCurrentApplication().exit();
     });
     
-    locationLabel = $("#location");
-    headingLabel = $("#heading");
+    latitudeLabel = $("#latitude");
+    longitudeLabel = $("#longitude");
     informationLabel = $("#information");
     
-    informationLabel.text("Calculating current position");
-    
-    //locationLabel.text("lala");
-    //$('#location').html("lala");
+    informationLabel.text("Calculating position");
+	latitudeLabel.text("Latitude: N/A");
+	longitudeLabel.text("Longitude: N/A");
+	
     locationID = window.setInterval(getCurrentLocation, 3000);
     
-    //getCurrentLocation();
 };
 
 function getCurrentLocation(){
 	navigator.geolocation.getCurrentPosition(getLocationSuccess, getLocationError);
-	
 }
 
 function getLocationSuccess(position){
 	informationLabel.text("Position acquired");
-	locationLabel.text("Latitude "+ position.coords.latitude + " Longitude " + position.coords.longitude );
-	headingLabel.text("Heading angle " + position.coords.heading);
+	
+	latitudeLabel.text("Latitude: "+ position.coords.latitude.toFixed(5));
+	longitudeLabel.text("Longitude: " + position.coords.longitude.toFixed(5));
 	
 	if(watchID == -1)
 	{
@@ -43,6 +42,9 @@ function getLocationSuccess(position){
 }
 
 function getLocationError(error){
+	
+	latitudeLabel.text("Latitude: N/A");
+	longitudeLabel.text("Longitude: N/A");
 	
 	if(error.code == 1)
 		informationLabel.text("No permission to get postion")

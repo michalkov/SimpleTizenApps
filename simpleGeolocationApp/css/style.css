@@ -32,20 +32,144 @@ html, body {
     padding: 0px 0px 0px 0px; 
 }
 
-
-
-
-#location {
-	padding: 12px 12px 12px 12px;
-	color: white;
+.dataView {
+    margin: 0px 0px 40px 0px;
+    padding: 0px 0px 0px 0px; 
+    width: 100%;
+    height: auto;  
+    position: relative;
 }
 
-#heading {
-	padding: 12px 12px 12px 12px;
-	color: white;
+.display {
+    margin-left: auto;
+    margin-right: auto;
+    
+    position: absolute;
+    width: 100%;
+    z-index: 0;
+    
+}
+
+.display-left {
+  	width: auto; 
+  	height: 0;
+	position: relative;
+	display: inline-block;
+	border-top: 30px solid transparent; 
+	border-right: 30px solid #484848; 
+	border-bottom: 30px solid transparent; 
+	margin: 0px 0px 0px 0px;
+  	padding: 0px 0px 0px 0px;
+}
+
+.display-center {
+  	width: 200px;
+	height: 60px;
+	position: relative;
+	display: inline-block;
+  	padding: 0px 0px 0px 0px; 
+	background: #484848;
+	margin: 0px 0px 0px 0px;
+}
+
+.display-right {
+  	width: auto; 
+  	position: relative;
+  	padding: 0px 0px 0px 0px; 
+	display: inline-block;
+	border-top: 30px solid transparent; 
+	border-left: 30px solid #484848; 
+	border-bottom: 30px solid transparent; 
+	margin: 0px 0px 0px 0px;
+}
+
+.screen {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    position: relative; 
+    padding-top: 10px;
+    z-index: 100;
+}
+
+.screen-left {
+  	width: auto; 
+  	height: 0;
+  	position: relative;
+  	display: inline-block;
+	border-top: 20px solid transparent; 
+	border-right: 20px solid #628b63; 
+	border-bottom: 20px solid transparent; 
+	margin: 0px 0px 0px 0px;
+  	padding: 0px 0px 0px 0px; 
+}
+
+.screen-center {
+  	position: relative;
+  	display: inline-block;
+	width: 180px;
+	height: 40px;
+  	padding: 0px 0px 0px 0px; 
+	background: #628b63;
+	margin: 0px 0px 0px 0px;
+  	overflow: hidden;
+}
+
+
+.screen-right {
+  position: relative;
+  display: inline-block;
+  padding: 0px 0px 0px 0px; 
+  border-top: 20px solid transparent; 
+	border-left: 20px solid #628b63; 
+	border-bottom: 20px solid transparent; 
+	margin: 0px 0px 0px 0px;
+}
+
+
+#longitude {
+	 margin: 13px 0px 0px 0px;
+     padding: 0px 0px 0px 0px; 
+     height: auto;
+     position: relative;
+     top:0;
+     bottom:0;
+     display:inline-block; 
+     float: left;
+	 color: black;
+	 font-family: digital_font;
+	 font-size: 16px;
+}
+
+#latitude {
+	 margin: 13px 0px 0px 0px;
+     padding: 0px 0px 0px 0px; 
+     height: auto;
+     position: relative;
+     top:0;
+     bottom:0;
+     display:inline-block; 
+     float: left;
+	 color: black;
+	 font-family: digital_font;
+	 font-size: 16px;
 }
 
 #information {
-	padding: 12px 12px 12px 12px;
-	color: white;
+	 margin: 13px 0px 0px 0px;
+     padding: 0px 0px 0px 0px; 
+     height: auto;
+     position: relative;
+     top:0;
+     bottom:0;
+     display:inline-block; 
+     float: left;
+	 color: black;
+	 font-family: digital_font;
+	 font-size: 16px;
+}
+
+@font-face {
+	font-family: digital_font;
+	src: url('customFont.ttf');
 }
