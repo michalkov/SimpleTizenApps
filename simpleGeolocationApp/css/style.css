@@ -1,0 +1,51 @@
+html, body {
+
+	-webkit-touch-callout:none;
+	-webkit-user-select:none;
+	-khtml-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select:none;
+	user-select:none;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+	margin: 0px 0px 0px 0px;
+	padding: 0;
+	background-color: #000000;
+	width: 100%;
+	min-height: 100%;
+	overflow: hidden;
+}
+
+#page {
+    display: table;
+    position: relative;
+    width:100%;
+    height: 100%;
+    position:absolute;
+    padding: 0px 0px 0px 0px;
+}
+#pageContent {
+    display: table-cell;
+    position: relative;
+    vertical-align: middle;
+    text-align: center;
+    
+    padding: 0px 0px 0px 0px; 
+}
+
+
+
+
+#location {
+	padding: 12px 12px 12px 12px;
+	color: white;
+}
+
+#heading {
+	padding: 12px 12px 12px 12px;
+	color: white;
+}
+
+#information {
+	padding: 12px 12px 12px 12px;
+	color: white;
+}
