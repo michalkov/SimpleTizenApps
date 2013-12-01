@@ -4,4 +4,5 @@
     <content src="index.html"/>
     <icon src="icon.png"/>
     <name>simpleGeolocationApp</name>
+    <tizen:privilege name="http://tizen.org/privilege/location"/>
 </widget>
