@@ -100,7 +100,7 @@ function logDeviceMotion(e)
         + '[ z: ' + Math.round(e.accelerationIncludingGravity.z) + ' ]';
 	
 	// change physics gravity according to world gravity
-	physicsWorld.SetGravity(new b2Vec2(Math.round(e.accelerationIncludingGravity.y), Math.round(e.accelerationIncludingGravity.x)));
+	physicsWorld.SetGravity(new b2Vec2(Math.round(e.accelerationIncludingGravity.y*50), Math.round(e.accelerationIncludingGravity.x*50)));
 }
 
 // draw rectangle from JSON data
