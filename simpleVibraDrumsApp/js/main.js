@@ -1,6 +1,3 @@
-var startTime;
-var checkTime;
-
 //Initialize function
 var init = function () {
     // TODO:: Do your initialization job
@@ -11,25 +8,37 @@ var init = function () {
         if(e.keyName == "back")
             tizen.application.getCurrentApplication().exit();
     });
+    
+    $("#drum-ride-cymbal").click(function() {
+    	var audio = document.getElementById('drum-ride-audio');
+    	audio.currentTime= 0;
+    	audio.play();
+    });
+    
+    $("#drum-crash-cymbal").click(function() {
+    	var audio = document.getElementById('drum-crash-audio');
+    	audio.currentTime= 0;
+    	audio.play();
+    });
+    
+    $("#drum-high-tomtom").click(function() {
+    	var audio = document.getElementById('drum-tomtom-audio');
+    	audio.currentTime= 0;
+    	audio.play();
+    });
+    
+    $("#drum-high-tomtom2").click(function() {
+    	var audio = document.getElementById('drum-tomtom-audio');
+    	audio.currentTime= 0;
+    	audio.play();
+    });
+    
+    $("#drum-bass-drum").click(function() {
+    	var audio = document.getElementById('drum-bass-audio');
+    	audio.currentTime= 0;
+    	audio.play();
+    });
 };
 // window.onload can work without <body onload="">
 window.onload = init;
 
-function startTime() {
-    var today = new Date();
-    var h = today.getHours();
-
-    var m = today.getMinutes();
-    var s = today.getSeconds();
-    m = checkTime(m);
-    s = checkTime(s);
-    document.getElementById('divbutton1').innerHTML="Current time: " + h + ":" + m + ":" + s;
-    t = setTimeout(startTime, 250);
-}
-
-function checkTime(i) {
-    if (i < 10) {
-        i="0" + i;
-    }
-    return i;
-}
