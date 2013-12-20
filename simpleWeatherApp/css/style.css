@@ -1,1 +1,81 @@
+body, html {
+	overflow: hidden;
+	margin: 0px 0px 0px 0px;
+	padding: 0;
+	width: 100%;
+	min-height: 100%;
+	background-color: #3fabff;
+
+}
+
+#wrapper {
+	display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+#wrapper-cell {
+	display: table-cell;
+    vertical-align: middle;
+}
+
+
+
+#content {
+	display: block;
+	background-color: rgba(0, 50, 89, 0.5);
+	padding: 20px 20px;
+	border: 1px solid #000000;
+	margin-left: auto;
+	margin-right: auto;
+	width: 175px;
+	position: relative;
+	
+}
+
+#title {
+	font-family: 'Arial Black';
+	font-size: 20px;
+	color: white;	
+	margin-top: 0px;
+	text-shadow: 1px 1px 4px #000000;
+}
+
+.contentText {
+	font-family: 'Arial';
+	font-size: 15px;
+	color: white;
+	text-shadow: 1px 1px 4px #000000;
+}
+
+input {
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+	font-family: helvetica, arial, sans serif;
+	padding-left: 1px;
+	margin: 0 0;
+	-webkit-box-shadow: 0px 0px 2px 0px rgba(0,0,0,1);
+}
+
+.button {
+	display: inline-block;
+    background-color:white;
+    padding:10px;
+    position:relative;
+    font-family: 'Arial';
+    font-size:12px;
+    text-decoration:none;
+    color:black;
+    box-shadow: inset 0px 1px 0px #979797, 0px 6px 0px #6b6b6b, 2px 8px 2px rgba(0,0,0,1);
+    border-radius: 5px;
+    margin-top: 20px;
+    
+}
+ 
+.button:active {
+    top:7px;
+    box-shadow: inset 0px 1px 0px #979797, inset 0px -1px 0px #6b6b6b;
+}
 
