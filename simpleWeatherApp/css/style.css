@@ -79,3 +79,68 @@ input {
     box-shadow: inset 0px 1px 0px #979797, inset 0px -1px 0px #6b6b6b;
 }
 
+.cloud-type1, .cloud-type2, .cloud-type3 {
+	position: fixed;
+	margin: 0px auto 0px auto !important;
+	padding: 0px 0px 0px 0px;
+	width: 100% !important;
+	max-width: 100% !important;
+	min-width: 100% !important;
+	height: 100% !important;
+	max-height: 100% !important;
+	min-height: 100% !important;
+	-webkit-transform: translateZ(0);
+	-webkit-backface-visibility: hidden;
+   -webkit-perspective: 1000;
+}
+
+.cloud-type1 {
+	background: url("../images/cloud1.png");
+	background-repeat:no-repeat;
+	background-size: 297px 162px;
+	-webkit-animation: animate_cloud1 5s linear;
+	-webkit-animation-iteration-count: infinite;
+}
+
+.cloud-type2 {
+	background: url("../images/cloud2.png");
+	background-repeat:no-repeat;
+	background-size: 450px 263px;
+	-webkit-animation: animate_cloud2 40s linear;
+	-webkit-animation-iteration-count: infinite;
+}
+
+.cloud-type3 {
+	background: url("../images/cloud3.png");
+	background-repeat:no-repeat;
+	background-size: 215px 127px;
+	-webkit-animation: animate_cloud3 60s linear;
+	-webkit-animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes animate_cloud1 {
+	0% {
+		background-position: -50% 50%;
+  	}
+  	100% {
+    	background-position: 150% 50%;
+    }
+}
+
+@-webkit-keyframes animate_cloud2 {
+	0% {
+		background-position: -100% 20%;
+  	}
+  	100% {
+    	background-position: 200% 20%;
+    }
+}
+
+@-webkit-keyframes animate_cloud3 {
+	0% {
+		background-position: -50% 80%;
+  	}
+  	100% {
+    	background-position: 150% 80%;
+    }
+}
