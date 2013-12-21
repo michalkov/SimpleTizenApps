@@ -5,7 +5,9 @@ body, html {
 	width: 100%;
 	min-height: 100%;
 	background-color: #3fabff;
-
+	-webkit-touch-callout:none;
+	-webkit-user-select:none;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
 }
 
 #wrapper {
@@ -42,7 +44,33 @@ body, html {
 	text-shadow: 1px 1px 4px #000000;
 }
 
+.loader {
+	display: block;
+	content: "";
+	background: url("../images/loader.gif");
+	background-repeat:no-repeat;
+	background-size: 64px 50px;
+	width: 64px;
+	height: 50px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .contentText {
+	font-family: 'Arial';
+	font-size: 15px;
+	color: white;
+	text-shadow: 1px 1px 4px #000000;
+}
+
+.inputError {
+	font-family: 'Arial';
+	font-size: 15px;
+	color: red;
+	text-shadow: 1px 1px 4px #000000;
+}
+
+.weatherInfo {
 	font-family: 'Arial';
 	font-size: 15px;
 	color: white;
@@ -60,23 +88,23 @@ input {
 	width: 120px;
 }
 
+
 .button {
 	display: inline-block;
-    background-color:white;
+	background-color:white;
     padding:10px;
     position:relative;
     font-family: 'Arial';
     font-size:12px;
     text-decoration:none;
-    color:black;
+    color: black;
     box-shadow: inset 0px 1px 0px #979797, 0px 6px 0px #6b6b6b, 2px 8px 2px rgba(0,0,0,1);
     border-radius: 5px;
     margin-top: 20px;
-    
 }
- 
-.button:active {
-    top:7px;
+
+.button.active {
+	top:7px;
     box-shadow: inset 0px 1px 0px #979797, inset 0px -1px 0px #6b6b6b;
 }
 
@@ -152,3 +180,83 @@ input {
     	background-position: 150% 80%;
     }
 }
+
+#fountainG{
+	display: block;
+	position:relative;
+	width:150px;
+	height:29px;
+	margin-left: auto;
+	margin-right: auto;
+	content: "";
+}
+
+.fountainG{
+	position:absolute;
+	top:0;
+	background-color:#144BB8;
+	width:29px;
+	height:29px;
+	-webkit-animation-name:bounce_fountainG;
+	-webkit-animation-duration:1.3s;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-direction:linear;
+	-webkit-transform:scale(.3);
+	-webkit-border-radius:19px;
+}
+
+#fountainG_1{
+	left:0;
+	-webkit-animation-delay:0.52s;
+}
+
+#fountainG_2{
+	left:30px;
+	-webkit-animation-delay:0.65s;
+}
+
+#fountainG_3{
+	left:60px;
+	-webkit-animation-delay:0.78s;
+}
+
+#fountainG_4{
+	left:90px;
+	-webkit-animation-delay:0.91s;
+}
+
+#fountainG_5{
+	left:120px;
+	-webkit-animation-delay:1.04s;
+}
+
+#fountainG_6{
+	left:150px;
+	-webkit-animation-delay:1.17s;
+}
+
+#fountainG_7{
+	left:180px;
+	-webkit-animation-delay:1.3s;
+}
+
+#fountainG_8{
+	left:210px;
+	-webkit-animation-delay:1.43s;
+}
+
+
+@-webkit-keyframes bounce_fountainG{
+	0%{
+		-webkit-transform:scale(1);
+		background-color:#144BB8;
+	}
+
+	100%{
+		-webkit-transform:scale(.3);
+		background-color:#87D5FF;
+	}
+}
+
+
+
