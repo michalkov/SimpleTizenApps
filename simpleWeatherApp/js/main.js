@@ -24,12 +24,17 @@ var init = function () {
             tizen.application.getCurrentApplication().exit();
     });
     
-    $("#searchButton").click(function(){
-    	getWeather();
-    });
+    var searchButton = document.getElementById('searchButton');
     
-    weatherObjectArray = new Array();
+    searchButton.addEventListener('touchstart', function(){
+  		$("#searchButton").toggleClass("active");
+  	}, false);
+    searchButton.addEventListener('touchend', function(){
+    	$("#searchButton").toggleClass("active");
+    	getWeather($("#countryInput").val(), $("#cityInput").val());
+  	}, false);
     
+    weatherObjectArray = new Array();    
     weatherView = document.getElementById('weather-view');
     
     weatherView.width = window.innerWidth;
@@ -108,33 +113,116 @@ var render = function() {
 
 function getWeather(country, city)
 {
-	if(country.length == 0)
+	clearErrors();
+	
+	if(!country || country.length == 0)
 		showCountryError();
-	else if(city.length == 0)
+	else if(!city || city.length == 0)
 		showCityError();
-	else	
-		$.getJSON("http://api.wunderground.com/api/2a8066612426bf38/geolookup/conditions/q/"+
-			country+"/"+city+".json", showWeather);
+	else{
+		var url = "http://api.wunderground.com/api/2a8066612426bf38/geolookup/conditions/q/"+
+			country+"/"+city+".json";
+		$.ajax({
+			type: 'GET',
+		    url: url,
+		    async: true,
+		    contentType: "application/json",
+		    dataType: 'jsonp',
+		    success: showWeather,
+		    error: showQueryError,
+		    timeout: 8000
+		});
+		$("#content").empty();
+		showLoader();
+	}
 	
 	// show loading
 }
 
 function showWeather(jsonData)
 {
-
+	$("#content").empty();
+	console.log(jsonData);
+	console.log(jsonData.error);
+	// należy sprawdzić co tam w środku jest
+	if(jsonData.response.error != undefined || jsonData.current_observation == undefined){
+		$("#content").append("<p class=\"inputError\">Can't find weather for you.</p>");
+	}
+	else {
+		$("#content").append("<p id=\"title\">Weather for now</p>")
+		$("#content").append("<p class=\"weatherInfo\">Country: "+jsonData.location.country_name+"</p>");
+		$("#content").append("<p class=\"weatherInfo\">City: "+jsonData.location.city+"</p>");
+		$("#content").append("<p class=\"weatherInfo\">Temperature: "+jsonData.current_observation.temp_c+" &deg;C</p>");
+		$("#content").append("<p class=\"weatherInfo\">Weather: "+jsonData.current_observation.weather+"</p>");
+		$("#content").append("<p class=\"weatherInfo\">Humidity: "+jsonData.current_observation.relative_humidity+"</p>");
+	}
+	showBackButton();
 }
 
 function showCountryError()
 {
-
+	$("#countryInput").before("<p class=\"inputError\">Wrong country name</p>");
 }
 
 function showCityError()
 {
-	
+	$("#cityInput").before("<p class=\"inputError\">Wrong city name</p>");
+}
+
+function clearErrors()
+{
+	$(".inputError").remove();
 }
 
 function showQueryError()
 {
+	$("#content").empty();
+	$("#content").append("<p class=\"inputError\">Can't create your request</p>")
+	showBackButton();
+}
 
+function showBackButton()
+{
+	$("#content").append("<div class=\"button\" id=\"backButton\"><span>Back</span></div>");
+    var backButton = document.getElementById('backButton');
+    
+    backButton.addEventListener('touchstart', function(){
+  		$("#backButton").toggleClass("active");
+  	}, false);
+    backButton.addEventListener('touchend', function(){
+    	$("#backButton").toggleClass("active");
+    	showWelcomeView();
+  	}, false);
+}
+
+function showLoader()
+{
+	$("#content").append("<div id=\"fountainG\">" +
+			"<div id=\"fountainG_1\" class=\"fountainG\"></div>" +
+			"<div id=\"fountainG_2\" class=\"fountainG\"></div>" +
+			"<div id=\"fountainG_3\" class=\"fountainG\"></div>" +
+			"<div id=\"fountainG_4\" class=\"fountainG\"></div>" +
+			"<div id=\"fountainG_5\" class=\"fountainG\"></div>" +
+			"</div>");
+}
+
+function showWelcomeView()
+{
+	$("#content").empty();
+	$("#content").append("<p id=\"title\">Simple Weather</p>");
+	$("#content").append("<p class=\"contentText\">Type country</p>");
+	$("#content").append("<input id=\"countryInput\"></input>");
+	$("#content").append("<p class=\"contentText\">Type city</p>");
+	$("#content").append("<input id=\"cityInput\"></input>");
+	
+	$("#content").append("<div class=\"button\" id=\"searchButton\"><span>Search</span></div>");
+    var searchButton = document.getElementById('searchButton');
+    
+    searchButton.addEventListener('touchstart', function(){
+  		$("#searchButton").toggleClass("active");
+  	}, false);
+    searchButton.addEventListener('touchend', function(){
+    	$("#searchButton").toggleClass("active");
+    	getWeather($("#countryInput").val(), $("#cityInput").val());
+  	}, false);
 }
